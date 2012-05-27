@@ -12,6 +12,7 @@ public class ShareSQLAdapter extends SQLiteOpenHelper{
 	public static final String COLUMN_CONTENT = "content";
 	public static final String COLUMN_DATE = "date";
 	public static final String COLUMN_DATATYPE = "datatype"; 
+	public static final String COLUMN_DESCRIPTION = "description";
 
 	private static final String DATABASE_NAME = "shared.db";
 	private static final int DATABASE_VERSION = 1;
@@ -22,6 +23,7 @@ public class ShareSQLAdapter extends SQLiteOpenHelper{
 			+ " integer primary key autoincrement, " + COLUMN_CONTENT
 			+ " text not null, " + COLUMN_DATE
 			+ " text not null, " + COLUMN_DATATYPE
+			+ " text not null, " + COLUMN_DESCRIPTION
 			+ " text not null);";
 	
 	public ShareSQLAdapter(Context context) {

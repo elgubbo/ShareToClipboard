@@ -9,6 +9,7 @@ public class ShareContent {
 	private long id;
 	private String dataType;
 	private Time time;
+	private String description;
 	
 	public String getContent() {
 		return content;
@@ -24,7 +25,7 @@ public class ShareContent {
 	}
 	
 	public String toString(){
-		return content;
+		return description;
 	}
 	public void setDataType(String dataType) {
 		this.dataType = dataType;
@@ -37,6 +38,12 @@ public class ShareContent {
 	}
 	public Time getTime() {
 		return time;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getDescription() {
+		return description;
 	}
 
 }
