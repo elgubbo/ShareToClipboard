@@ -7,8 +7,9 @@ import com.elgubbo.sharetoclipboarddatabase.ShareDataSource;
 import greendroid.app.GDListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.EventLogTags.Description;
+import android.text.ClipboardManager;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 public class ShareToClipboardActivity extends GDListActivity {
 	
@@ -26,11 +27,10 @@ public class ShareToClipboardActivity extends GDListActivity {
 		Intent intent = getIntent();
 		Bundle extras = intent.getExtras();
 		String action = intent.getAction();
-
+		String content = null, description = null;
 		// if this is from the share menu
 		if (Intent.ACTION_SEND.equals(action)) {   if (extras.containsKey(Intent.EXTRA_TEXT)) {
 		    //Use contents of Bundle
-			String content, description = null;
 		    content = extras.getString(Intent.EXTRA_TEXT);
 		    if(extras.containsKey(Intent.EXTRA_SUBJECT)){
 			    description = extras.getString(Intent.EXTRA_SUBJECT);
@@ -39,8 +39,14 @@ public class ShareToClipboardActivity extends GDListActivity {
 		      datasource.createContent(content, description, "text");
 		    }
 		  }
-		} 
 		//Copy current Link/Text/Whatever to clipboard
+		ClipboardManager cm = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+		cm.setText(content);
+		//TODO add string resource
+		Toast t = Toast.makeText(this, "Added share to clipboard", 3000);
+		t.show();
+		} 
+
 		//A list of all Contents is created
 		List<ShareContent> values = datasource.getAllContents();
 		// Use the SimpleCursorAdapter to show the
