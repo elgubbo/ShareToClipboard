@@ -2,7 +2,6 @@ package com.elgubbo.sharetoclipboarddatabase;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
@@ -25,8 +24,7 @@ public class ShareSQLAdapter extends SQLiteOpenHelper{
 			+ " text not null, " + COLUMN_DATATYPE
 			+ " text not null);";
 	
-	public ShareSQLAdapter(Context context, String name, CursorFactory factory,
-			int version) {
+	public ShareSQLAdapter(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
