@@ -13,3 +13,18 @@ ShareToClipboard app
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see http://www.gnu.org/licenses.
+	
+--------------------------------------------------------------------------
+
+This app is meant to fill the gap between the share menu and the destination of
+the link/imagefile/videofile/audiofile you want to share.
+
+I noticed that it is impossible to in some apps to copy the link to content i 
+want to share. So i started to work on this Tool.
+
+It lets you choose "ShareToClipboard" from most apps and copies the URL to the
+content to the clipboard.
+It also lets you manage the history of links you shared with this app in case 
+you want to share it or copy it to the clipboard again.
+Currently it only supports the "text" type of sharing, but in the future 
+more MIME types will be supported.
