@@ -19,7 +19,7 @@ ShareToClipboard app
 This app is meant to fill the gap between the share menu and the destination of
 the link/imagefile/videofile/audiofile you want to share.
 
-I noticed that it is impossible to in some apps to copy the link to content i 
+I noticed that it is impossible in some apps to copy the link to content i 
 want to share. So i started to work on this Tool.
 
 It lets you choose "ShareToClipboard" from most apps and copies the URL to the
