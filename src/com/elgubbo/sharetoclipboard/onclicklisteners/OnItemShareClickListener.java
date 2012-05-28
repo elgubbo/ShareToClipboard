@@ -1,4 +1,4 @@
-package com.elgubbo.sharetoclipboardonclicklisteners;
+package com.elgubbo.sharetoclipboard.onclicklisteners;
 
 import android.content.Context;
 import android.content.Intent;

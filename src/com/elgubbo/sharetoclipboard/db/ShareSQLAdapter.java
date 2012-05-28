@@ -1,4 +1,4 @@
-package com.elgubbo.sharetoclipboarddatabase;
+package com.elgubbo.sharetoclipboard.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

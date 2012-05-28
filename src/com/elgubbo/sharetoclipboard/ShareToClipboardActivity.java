@@ -3,7 +3,7 @@ package com.elgubbo.sharetoclipboard;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.elgubbo.sharetoclipboarddatabase.ShareDataSource;
+import com.elgubbo.sharetoclipboard.db.ShareDataSource;
 
 import greendroid.app.GDListActivity;
 import greendroid.widget.ActionBarItem;
@@ -28,11 +28,9 @@ public class ShareToClipboardActivity extends GDListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addActionBarItem(Type.Edit, ACTION_BAR_EDIT);
-		// setActionBarContentView(R.layout.main);
 		// create the datasource responsible for maintaining ShareContent
 		// objects
 		datasource = new ShareDataSource(this);
-		// open the database/datasource
 		datasource.open();
 		// This part consumes the Share intent
 		// Should be replaced by something like a "intentHandler"
@@ -60,14 +58,12 @@ public class ShareToClipboardActivity extends GDListActivity {
 			Toast t = Toast.makeText(this, "Added share to clipboard", 3000);
 			t.show();
 		}
-		// build quickactionsbar
 		buildQuickActionsBar();
-		// add actionlistener
+		//TODO add actionlistener
 
 		// A list of all Contents is created
 		List<ShareContent> values = datasource.getAllContents();
-		// Use the SimpleCursorAdapter to show the
-		// elements in a ListView
+		// Show database elements in a ListView
 		ShareContentAdapter adapter = new ShareContentAdapter(this,
 				R.layout.list_content, (ArrayList<ShareContent>) values, datasource);
 		setListAdapter(adapter);

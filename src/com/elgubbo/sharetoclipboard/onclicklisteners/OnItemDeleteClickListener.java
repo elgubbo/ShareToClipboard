@@ -1,7 +1,7 @@
-package com.elgubbo.sharetoclipboardonclicklisteners;
+package com.elgubbo.sharetoclipboard.onclicklisteners;
 
 import com.elgubbo.sharetoclipboard.ShareContentAdapter;
-import com.elgubbo.sharetoclipboarddatabase.ShareDataSource;
+import com.elgubbo.sharetoclipboard.db.ShareDataSource;
 
 import android.view.View;
 import android.view.View.OnClickListener;

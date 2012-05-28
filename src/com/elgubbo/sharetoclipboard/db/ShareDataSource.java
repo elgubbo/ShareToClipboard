@@ -1,4 +1,4 @@
-package com.elgubbo.sharetoclipboarddatabase;
+package com.elgubbo.sharetoclipboard.db;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +72,6 @@ public class ShareDataSource {
 			contents.add(content);
 			cursor.moveToNext();
 		}
-		// Make sure to close the cursor
 		cursor.close();
 		return contents;
 	}

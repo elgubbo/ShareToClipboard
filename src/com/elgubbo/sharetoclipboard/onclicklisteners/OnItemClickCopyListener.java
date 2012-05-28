@@ -1,4 +1,4 @@
-package com.elgubbo.sharetoclipboardonclicklisteners;
+package com.elgubbo.sharetoclipboard.onclicklisteners;
 
 import com.elgubbo.sharetoclipboard.ShareContentAdapter;
 
