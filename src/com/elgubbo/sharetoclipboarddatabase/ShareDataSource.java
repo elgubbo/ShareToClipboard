@@ -58,6 +58,8 @@ public class ShareDataSource {
 		database.delete(ShareSQLAdapter.TABLE_SHARED, ShareSQLAdapter.COLUMN_ID
 				+ " = " + id, null);
 	}
+	
+
 	public List<ShareContent> getAllContents() {
 		List<ShareContent> contents = new ArrayList<ShareContent>();
 
