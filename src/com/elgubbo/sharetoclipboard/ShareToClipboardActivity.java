@@ -27,6 +27,7 @@ public class ShareToClipboardActivity extends GDListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getListView().setBackgroundResource(R.id.backgroundifempty);
 		addActionBarItem(Type.Edit, ACTION_BAR_EDIT);
 		// create the datasource responsible for maintaining ShareContent
 		// objects
@@ -69,10 +70,10 @@ public class ShareToClipboardActivity extends GDListActivity {
 		setListAdapter(adapter);
 	}
 
-	@Override
-	public int createLayout() {
-		return R.layout.listlayout;
-	}
+//	@Override
+//	public int createLayout() {
+//		return R.layout.listlayout;
+//	}
 
 	public void onShowBar(View v) {
 		mBar.show(v);

@@ -13,6 +13,9 @@ public class ShareSQLAdapter extends SQLiteOpenHelper{
 	public static final String COLUMN_DATE = "date";
 	public static final String COLUMN_DATATYPE = "datatype"; 
 	public static final String COLUMN_DESCRIPTION = "description";
+	//TODO add string resources
+	public static final String HELP_CONTENT = "help";
+	private static final String HELP_DESCRIPTION = "help description";
 
 	private static final String DATABASE_NAME = "shared.db";
 	private static final int DATABASE_VERSION = 1;
@@ -32,7 +35,9 @@ public class ShareSQLAdapter extends SQLiteOpenHelper{
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL(DATABASE_CREATE);	
+		db.execSQL(DATABASE_CREATE);
+		//Add the "help" into the Table
+		db.execSQL("INSERT INTO '"+TABLE_SHARED+"' VALUES ('0', '"+HELP_CONTENT+"', 'value3', 'value4', '"+HELP_DESCRIPTION+"')");
 	}
 
 	@Override

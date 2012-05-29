@@ -22,6 +22,8 @@ public final class R {
         public static final int gd_shrink_from_top=0x7f04000a;
         public static final int gd_shrink_from_topleft_to_bottomright=0x7f04000b;
         public static final int gd_shrink_from_topright_to_bottomleft=0x7f04000c;
+        public static final int slidein=0x7f04000d;
+        public static final int slideout=0x7f04000e;
     }
     public static final class attr {
         /** <p>Must be an integer value, such as "<code>100</code>".
@@ -691,16 +693,21 @@ containing a value of this type.
         public static final int list_item_background_gradient=0x7f02004c;
     }
     public static final class id {
-        public static final int actualcontent=0x7f05002a;
+        public static final int actualcontent=0x7f05002c;
+        public static final int backgroundifempty=0x7f050032;
         public static final int bottom=0x7f050008;
         public static final int center=0x7f05000d;
         public static final int center_horizontal=0x7f05000c;
         public static final int center_vertical=0x7f05000b;
-        public static final int copybtn=0x7f05002d;
+        public static final int contentlayout=0x7f050029;
+        public static final int contentlayoutafterfling=0x7f050031;
+        public static final int contentlayoutflipped=0x7f05002d;
+        public static final int copybtn=0x7f050030;
         public static final int dashboard=0x7f050001;
-        public static final int deletebtn=0x7f05002c;
-        public static final int description=0x7f050029;
+        public static final int deletebtn=0x7f05002f;
+        public static final int description=0x7f05002b;
         public static final int empty=0x7f050002;
+        public static final int flipper=0x7f05002a;
         public static final int gd_action_bar=0x7f050012;
         public static final int gd_action_bar_content_view=0x7f050014;
         public static final int gd_action_bar_home_item=0x7f050015;
@@ -733,7 +740,7 @@ containing a value of this type.
         public static final int multiple=0x7f05000f;
         public static final int normal=0x7f050000;
         public static final int right=0x7f05000a;
-        public static final int sharebtn=0x7f05002b;
+        public static final int sharebtn=0x7f05002e;
         public static final int single=0x7f05000e;
         public static final int top=0x7f050007;
         public static final int xhdpi=0x7f050006;
@@ -770,8 +777,8 @@ containing a value of this type.
         public static final int gd_text_item_view=0x7f03001c;
         public static final int gd_thumbnail_item_view=0x7f03001d;
         public static final int list_content=0x7f03001e;
-        public static final int listlayout=0x7f03001f;
-        public static final int main=0x7f030020;
+        public static final int list_content_after_fling=0x7f03001f;
+        public static final int listlayout=0x7f030020;
     }
     public static final class string {
         public static final int app_name=0x7f08001d;

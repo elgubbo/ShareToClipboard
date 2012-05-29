@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/contentlayoutafterfling"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_item_background_gradient"
+    android:gravity="center"
+    android:paddingBottom="5dp"
+    android:paddingLeft="5dp"
+    android:paddingTop="5dp" >
+
+
+
+
+    <ImageView
+        android:contentDescription="share button"
+        android:id="@+id/sharebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="6dip"
+        android:src="@android:drawable/ic_menu_share" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="fill_parent"
+        android:background="@android:color/darker_gray" />
+    <ImageView
+        android:contentDescription="delete button"
+        android:id="@+id/deletebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="6dip"
+        android:src="@android:drawable/ic_delete" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="fill_parent"
+        android:background="@android:color/darker_gray" />
+    <ImageView
+        android:contentDescription="copy button"
+        android:id="@+id/copybtn"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="6dip"
+        android:src="@android:drawable/ic_menu_save" />
+
+</LinearLayout>
