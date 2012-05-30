@@ -5,15 +5,14 @@ import com.elgubbo.sharetoclipboard.db.ShareDataSource;
 import com.elgubbo.sharetoclipboard.listeners.OnItemClickCopyListener;
 import com.elgubbo.sharetoclipboard.listeners.OnItemDeleteClickListener;
 import com.elgubbo.sharetoclipboard.listeners.OnItemShareClickListener;
+import com.elgubbo.sharetoclipboard.listeners.OnItemTouchListener;
+
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -47,8 +46,6 @@ public class ShareContentAdapter extends ArrayAdapter<ShareContent> {
 			holder.copybtn = (ImageView) v.findViewById(R.id.copybtn);
 			holder.delbtn = (ImageView) v.findViewById(R.id.deletebtn);
 			holder.sharebtn = (ImageView) v.findViewById(R.id.sharebtn);
-			holder.contentLayout = (LinearLayout) v
-					.findViewById(R.id.contentlayout);
 			holder.flipper = (ViewFlipper) v.findViewById(R.id.flipper);
 			v.setTag(holder);
 
@@ -69,23 +66,13 @@ public class ShareContentAdapter extends ArrayAdapter<ShareContent> {
 					position, cont));
 			holder.descriptionText.setText(content.getDescription());
 			holder.contentText.setText("Link: " + content.getContent());
-			holder.flipper.setOnTouchListener(new OnTouchListener() {
-
-				@Override
-				public boolean onTouch(View v, MotionEvent event) {
-					ViewFlipper f = (ViewFlipper) v;
-					f.showNext();
-					return false;
-				}
-			});
+			holder.flipper.setOnTouchListener(new OnItemTouchListener());
 		}
 		return v;
 	}
 
 	static class ViewHolder {
 		ViewFlipper flipper;
-		LinearLayout contentLayout;
-		LinearLayout contentLayoutFlipped;
 		TextView descriptionText;
 		TextView contentText;
 		ImageView delbtn;
