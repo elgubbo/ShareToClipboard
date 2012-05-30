@@ -1,21 +1,21 @@
 package com.elgubbo.sharetoclipboard;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.elgubbo.sharetoclipboard.db.ShareDataSource;
-
 import greendroid.app.GDListActivity;
 import greendroid.widget.ActionBarItem;
 import greendroid.widget.ActionBarItem.Type;
 import greendroid.widget.QuickAction;
 import greendroid.widget.QuickActionBar;
 import greendroid.widget.QuickActionWidget;
-import android.content.Intent;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import android.os.Bundle;
 import android.text.ClipboardManager;
 import android.view.View;
-import android.widget.Toast;
+
+import com.elgubbo.sharetoclipboard.db.ShareDataSource;
+import com.elgubbo.sharetoclipboard.handlers.IntentHandler;
 
 public class ShareToClipboardActivity extends GDListActivity {
 
@@ -23,9 +23,22 @@ public class ShareToClipboardActivity extends GDListActivity {
 	private static final int ACTION_BAR_EDIT = 0;
 	private QuickActionWidget mBar;
 
+	public void buildQuickActionsBar() {
+		mBar = new QuickActionBar(this);
+		mBar.addQuickAction(new QuickAction(this,
+				R.drawable.gd_action_bar_sort_by_size, R.string.gd_sort_by_size));
+		mBar.addQuickAction(new QuickAction(this,
+				R.drawable.gd_action_bar_settings, R.string.gd_settings));
+	}
+
+	// @Override
+	// public int createLayout() {
+	// return R.layout.listlayout;
+	// }
+
 	/** Called when the activity is first created. */
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getListView().setBackgroundResource(R.id.backgroundifempty);
 		addActionBarItem(Type.Edit, ACTION_BAR_EDIT);
@@ -36,65 +49,25 @@ public class ShareToClipboardActivity extends GDListActivity {
 		// This part consumes the Share intent
 		// Should be replaced by something like a "intentHandler"
 		// TODO add class IntentHandler
-		Intent intent = getIntent();
-		Bundle extras = intent.getExtras();
-		String action = intent.getAction();
-		String content = null, description = null;
-		if (Intent.ACTION_SEND.equals(action)) {
-			if (extras.containsKey(Intent.EXTRA_TEXT)) {
-				// Use contents of Bundle
-				content = extras.getString(Intent.EXTRA_TEXT);
-				if (extras.containsKey(Intent.EXTRA_SUBJECT)) {
-					description = extras.getString(Intent.EXTRA_SUBJECT);
-				} else
-					description = content;
-				if (content != null) {
-					datasource.createContent(content, description, "text");
-				}
-			}
-			// Copy current Link/Text/Whatever to clipboard
-			ClipboardManager cm = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-			cm.setText(content);
-			// TODO add string resource
-			Toast t = Toast.makeText(this, "Added share to clipboard", 3000);
-			t.show();
-		}
+		final IntentHandler ih = new IntentHandler(getIntent(), datasource,
+				this, (ClipboardManager) getSystemService(CLIPBOARD_SERVICE));
+		ih.handleIntent();
+
 		buildQuickActionsBar();
-		//TODO add actionlistener
+		// TODO add actionlistener
 
 		// A list of all Contents is created
-		List<ShareContent> values = datasource.getAllContents();
+		final List<ShareContent> values = datasource.getAllContents();
 		// Show database elements in a ListView
-		ShareContentAdapter adapter = new ShareContentAdapter(this,
-				R.layout.list_content, (ArrayList<ShareContent>) values, datasource);
+		final ShareContentAdapter adapter = new ShareContentAdapter(this,
+				R.layout.list_content, (ArrayList<ShareContent>) values,
+				datasource);
 		setListAdapter(adapter);
 	}
 
-//	@Override
-//	public int createLayout() {
-//		return R.layout.listlayout;
-//	}
-
-	public void onShowBar(View v) {
-		mBar.show(v);
-	}
-
 	@Override
-	protected void onResume() {
-		datasource.open();
-		super.onResume();
-	}
-
-	public void buildQuickActionsBar() {
-		mBar = new QuickActionBar(this);
-		mBar.addQuickAction(new QuickAction(this,
-				R.drawable.gd_action_bar_sort_by_size, R.string.gd_sort_by_size));
-		mBar.addQuickAction(new QuickAction(this,
-				R.drawable.gd_action_bar_settings, R.string.gd_settings));
-	}
-
-	@Override
-	public boolean onHandleActionBarItemClick(ActionBarItem item, int position) {
+	public boolean onHandleActionBarItemClick(final ActionBarItem item,
+			final int position) {
 		switch (item.getItemId()) {
 		case ACTION_BAR_EDIT:
 			onShowBar(this.getActionBar().getItem(ACTION_BAR_EDIT)
@@ -110,5 +83,15 @@ public class ShareToClipboardActivity extends GDListActivity {
 	protected void onPause() {
 		datasource.close();
 		super.onPause();
+	}
+
+	@Override
+	protected void onResume() {
+		datasource.open();
+		super.onResume();
+	}
+
+	public void onShowBar(final View v) {
+		mBar.show(v);
 	}
 }
